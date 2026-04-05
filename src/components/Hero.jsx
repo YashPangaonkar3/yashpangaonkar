@@ -87,7 +87,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.8 }}
           className="mt-16 flex items-center justify-center gap-6"
         >
-          <a href="https://github.com/Yash-Pangaonkar" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white hover:-translate-y-1 transition-all">
+          <a href="https://github.com/YashPangaonkar" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-white hover:-translate-y-1 transition-all">
             <FaGithub size={24} />
           </a>
           <a href="https://linkedin.com/in/yash-pangaonkar" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-blue-500 hover:-translate-y-1 transition-all">

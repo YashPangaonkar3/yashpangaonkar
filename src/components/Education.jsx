@@ -9,7 +9,7 @@ const Education = () => {
       institution: "Walchand Institute of Technology, Solapur",
       date: "June 2021 – May 2025",
       details: "Batch 2025 passout",
-      grade: "CGPA: 8.25",
+      grade: "CGPA: 8.52",
       icon: <GraduationCap size={20} className="text-blue-400" />
     },
     {
