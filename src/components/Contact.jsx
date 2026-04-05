@@ -22,17 +22,41 @@ const Contact = () => {
     return Object.keys(tempErrors).length === 0;
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (validate()) {
       setIsSubmitting(true);
-      // Simulate API call
-      setTimeout(() => {
+      try {
+        const response = await fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || '',
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+          }),
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          setIsSuccess(true);
+          setFormData({ name: '', email: '', message: '' });
+          setTimeout(() => setIsSuccess(false), 5000);
+        } else {
+          console.error("Form submission failed:", result.message);
+          alert("Error submitting form. Please check your access key or try again later.");
+        }
+      } catch (error) {
+        console.error("Error submitting form:", error);
+        alert("An error occurred while sending your message. Please try again later.");
+      } finally {
         setIsSubmitting(false);
-        setIsSuccess(true);
-        setFormData({ name: '', email: '', message: '' });
-        setTimeout(() => setIsSuccess(false), 5000);
-      }, 1500);
+      }
     }
   };
 
